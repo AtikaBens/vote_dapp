@@ -6,7 +6,7 @@ Build decentralized application(Dapp), on the Ethereum Network.
 
 1 - Download node-v8.9.4-x64.msi from "https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi" then install it.
 
-2 - Download this repository "https://github.com/dappuniversity/election" then extract it.
+2 - Download or clone this repository.
 
 3 - Go in that repository from the command line and run : npm install
 
