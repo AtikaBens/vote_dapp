@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Formulair d'inscription</title>
+    <title>Formulaire d'inscription</title>
 
     <!-- Bootstrap -->
-    <link href="css/index.css" rel="stylesheet">
+    <link href="css/candidate.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +34,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-12">
-                <form id="login-form" action="./root.html"role="form" style="display: block;">
+                <form id="login-form" action="./admin.html"role="form" style="display: block;">
                   <div class="form-group">
                      <label for="Nom"><b> Matricule   </b> </label>
                     <input type="text" name="Matricule" id="Matricule" tabindex="1" class="form-control"placeholder="" value="">
@@ -48,7 +48,7 @@
                    <div class="form-group">
                       <label for="Nom"><b> Prénom </b> </label>
                     <input type="text" name="Prénom" id="Prénom" tabindex="3" class="form-control" placeholder="Prénom" value="">
-                  </div>
+
                   <div class="form-group">
                       <label for="Nom"><b> Date de naissance   </b> </label>
                     <input type="text" name="Date_de_naissance" id="Date_de_naissance" tabindex="4" class="form-control" placeholder="exp : 01/12/1962" value="">
@@ -62,12 +62,13 @@ Gatineau (Québec)" value="">
                       <label for="Nom"><b>N° Téléphone  </b> </label>
                     <input type="text" name="num" id="num" tabindex="6" class="form-control" placeholder="+213666-66-66-66" value="">
                   </div>
+                     
                      <div class="form-group">
-                      <label for="Nom"><b> E-mail   </b> </label>
-                    <input type="text" name="email" id="email" tabindex="7" class="form-control"placeholder="Xxxx@gmail.com" value="">
+                      <label for="Nom"><b> E-mail  </b> </label>
+                    <input type="text" name="email" id="email" tabindex="6" class="form-control" placeholder="exemple@gmail.com" value="">
                   </div>
                   <div class="form-group">
-                   <label for="Nom"><b> Département :   </b> </label>
+                   <label for="Nom"><b> Département    </b> </label>
 
                     <input type="text" name="Département" id="Département" tabindex="8" class="form-control" placeholder="Département" value="">
                   </div>
@@ -78,31 +79,15 @@ Gatineau (Québec)" value="">
                   </div>
 
                 
-                  <div class="form-group">
-                    <div class="row">
+                  
+                  <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="10" class="form-control btn btn-login" value="Lancer le vote">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        
+                        <input type="submit" name="login-submit" id="login-submit" tabindex="10" class="form-control btn btn-login" value="Valider ">
                       </div>
                     </div>
                   </div>
                 </form>
-                <form id="login-form" action="./liste.html"role="form" style="display: block;">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="11" class="form-control btn btn-login" value="Ajouter ">
-                      </div>
-                    </div>
-                  </div>
-
-                </form>
+                
               </div>
             </div>
           </div>
@@ -114,6 +99,6 @@ Gatineau (Québec)" value="">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="js/formulair.js"></script>
+    <script src="js/candidate.js"></script>
   </body>
 </html>
