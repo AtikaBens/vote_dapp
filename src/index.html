@@ -37,7 +37,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-12">
-                <form id="login-form" action="./admin.html"role="form" style="display: block;">
+                <form id="login-form" name="login_form" action="" role="form" style="display: block;">
                   <div class="form-group">
                     <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                   </div>
@@ -48,26 +48,15 @@
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In as admin">
+                        <input type="submit" name="admin_login-submit" id="admin_login-submit" tabindex="4" class="form-control btn btn-login" value="Log In as admin" onclick="adminClick();">
                       </div>
-                    </div>
-                  </div>
-
-
-               
-                  
-                </form>
-                <form id="login-form" action="./root.html"role="form" style="display: block;">
-                  <div class="form-group">
-                    <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="5" class="form-control btn btn-login" value="Log In as voter">
+                        <input type="submit" name="voter_login-submit" id="voterlogin-submit" tabindex="5" class="form-control btn btn-login" value="Log In as voter" onclick="voterClick();">
                       </div>
                     </div>
-                  </div>
+                  </div>  
                 </form>
-
-
+                
 
                 <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
                   <div class="form-group">
