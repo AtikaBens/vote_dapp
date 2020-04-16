@@ -34,7 +34,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-12">
-                <form id="login-form" action="./admin.html"role="form" style="display: block;">
+                <form id="login-form" action="./admin.html" role="form" style="display: block;">
                   <div class="form-group">
                      <label for="Nom"><b> Matricule   </b> </label>
                     <input type="text" name="Matricule" id="Matricule" tabindex="1" class="form-control"placeholder="" value="">
@@ -77,12 +77,10 @@ Gatineau (Québec)" value="">
 
                     <input type="text" name="Poste" id="Poste" tabindex="9" class="form-control"placeholder="Poste" value="">
                   </div>
-
-                
                   
                   <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="10" class="form-control btn btn-login" value="Valider ">
+                        <input type="submit" name="login-submit" id="login-submit" tabindex="10" class="form-control btn btn-login" value="Valider " onclick="addCandidate();">
                       </div>
                     </div>
                   </div>
@@ -100,5 +98,8 @@ Gatineau (Québec)" value="">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="js/candidate.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/web3.min.js"></script>
   </body>
 </html>

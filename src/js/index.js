@@ -19,12 +19,12 @@ $(function() {
 
 function voterClick(){
 
-	document.login_form.action = "./root.html"
+	document.login_form.action = "./root.html";
 
 }
 
 function adminClick(){
 
-	document.login_form.action = "./admin.html"
+	document.login_form.action = "./admin.html";
 
 }

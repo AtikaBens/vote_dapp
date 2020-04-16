@@ -120,6 +120,7 @@ App = {
         });
     },
 
+
     castVote: function() {
         var candidateId = $('#candidatesSelect').val();
         App.contracts.Election.deployed().then(function(instance) {
