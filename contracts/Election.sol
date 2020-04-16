@@ -28,8 +28,8 @@ contract Election {
     );
 
     constructor () public {
-        addCandidate(12,"Candidate 1","Candidate 2",25653,"Candidate 2","Candidate 2","Candidate 2");
-        addCandidate(12,"Candidate 1","Candidate 2",25653,"Candidate 2","Candidate 2","Candidate 2");
+     //   addCandidate(12,"Candidate 1","Candidate 2",25653,"Candidate 2","Candidate 2","Candidate 2");
+    //    addCandidate(12,"Candidate 1","Candidate 2",25653,"Candidate 2","Candidate 2","Candidate 2");
    }
 
     function addCandidate (uint _matricule,string _name,string _fname,uint _date,string _adresss, string _email,string _poste) public {

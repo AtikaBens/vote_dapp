@@ -108,7 +108,7 @@ App = {
                     var voteCount = candidate[8]; 
 
                     // Render candidate Result
-                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + fname +"</td><td>" + voteCount + "</td></tr>"
+                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + name +"</td><td>" +fname+"</td><td>"+ voteCount + "</td></tr>"
                     candidatesResults.append(candidateTemplate);
 
                     // Render candidate List
@@ -116,7 +116,7 @@ App = {
                     candidatesList.append(candidateTemplate);
 
                     // Render candidate ballot option
-                    var candidateOption = "<option value='" + id + "' >" + matricule + "  " + name + "  " + fname+ "</ option>"
+                    var candidateOption = "<option value='" + id + "' >" +id + " - " + name + "  " + fname+ "</ option>"
                     candidatesSelect.append(candidateOption);
                 })
             });

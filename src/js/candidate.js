@@ -13,3 +13,4 @@ function addCandidate() {
             return instance.addCandidate(matricule,name,fname,date,address,email,poste);
         });
     }
+
