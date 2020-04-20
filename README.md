@@ -12,7 +12,7 @@ Build decentralized application(Dapp), on the Ethereum Network.
 
 4 - Download and install Ganache.
 
-## Run the DAPP.
+### Run the DAPP.
 
 1 - Run Ganache.
 
