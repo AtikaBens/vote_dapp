@@ -10,12 +10,14 @@ Build decentralized application(Dapp), on the Ethereum Network.
 
 3 - Go in that repository from the command line and run : npm install
 
-4 - Download and install Ganache.
+4 - In the command line execute the following command : npm install -g truffle
+
+5 - Download and install Ganache.
 
 ### Run the DAPP.
 
 1 - Run Ganache.
 
-2 - In the command line execute the following command : npm install -g truffle
+2 - In the command line execute the following command : truffle migrate --reset
 
 3 - In the command line execute the following command : npm run dev
