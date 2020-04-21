@@ -88,9 +88,12 @@ Admin = {
                     var matricule =candidate[1];
                     var name = candidate[2];
                     var fname = candidate[3];
+                    var email=candidate[6];
+                   
 
                     // Render candidate List
-                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + web3.toAscii(matricule) + "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) + "</td><tr>" 
+                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + web3.toAscii(matricule) + "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) + "</td><td>"+ web3.toAscii(email) +"</td><tr>" 
+
                     candidatesList.append(candidateTemplate);
 
                 })
