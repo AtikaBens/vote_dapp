@@ -90,7 +90,7 @@ Admin = {
                     var fname = candidate[3];
 
                     // Render candidate List
-                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + matricule + "</td><td>" + name +"</td><td>" + fname + "</td><tr>" 
+                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + web3.toAscii(matricule) + "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) + "</td><tr>" 
                     candidatesList.append(candidateTemplate);
 
                 })

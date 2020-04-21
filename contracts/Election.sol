@@ -4,13 +4,13 @@ contract Election {
     // Model a Candidate
     struct Candidate {
         uint id;
-        string matricule;
-        string name;
-        string fname;
-        uint date;
+        bytes32 matricule;
+        bytes32 name;
+        bytes32 fname;
+        bytes32 date;
         string adresss;
-        string email;
-        string poste;
+        bytes32 email;
+        bytes32 poste;
         uint voteCount;
     }
 
@@ -35,7 +35,7 @@ contract Election {
     //    addCandidate(12,"Candidate 1","Candidate 2",25653,"Candidate 2","Candidate 2","Candidate 2");
    }
 
-    function addCandidate (string _matricule,string _name,string _fname,uint _date,string _adresss, string _email,string _poste) public {
+    function addCandidate (bytes32 _matricule,bytes32 _name,bytes32 _fname,bytes32 _date,string _adresss, bytes32 _email,bytes32 _poste) public {
         candidatesCount ++;
         candidates[candidatesCount] = Candidate(candidatesCount,_matricule,_name,_fname,_date,_adresss,_email,_poste, 0);
 
