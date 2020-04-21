@@ -129,3 +129,6 @@ function addCand(){
     document.location.href = "./candidate.html";
 
 }
+function addelec(){
+document.location.href = "./register.html";
+}
