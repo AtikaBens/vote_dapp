@@ -88,9 +88,11 @@ Admin = {
                     var matricule =candidate[1];
                     var name = candidate[2];
                     var fname = candidate[3];
+                    var email=candidate[6];
+                   
 
                     // Render candidate List
-                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + matricule + "</td><td>" + name +"</td><td>" + fname + "</td><tr>" 
+                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + matricule + "</td><td>" + name +"</td><td>" + fname + "</td><td>"+email+"</td><tr>" 
                     candidatesList.append(candidateTemplate);
 
                 })
