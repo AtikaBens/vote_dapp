@@ -11,7 +11,7 @@ body {
 	color: #00415d;
 	background-color: #fff;
 	border-color: #fff;
-	text-align:center;
+	text-align:left;
 }
 .panel-login>.panel-heading a{
 	text-decoration: none;
@@ -25,6 +25,7 @@ body {
 .panel-login>.panel-heading a.active{
 	color: #029f5b;
 	font-size: 18px;
+	width: 0%;
 }
 .panel-login>.panel-heading hr{
 	margin-top: 10px;
