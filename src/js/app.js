@@ -101,7 +101,7 @@ App = {
                     var voteCount = candidate[8];
 
                     // Render candidate Result
-                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + web3.toAscii(matricule) + "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) +"</td><td>"+ voteCount + "</td></tr>"
+                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) +"</td><td>"+ voteCount + "</td></tr>"
                     candidatesResults.append(candidateTemplate);
 
                     // Render candidate ballot option
