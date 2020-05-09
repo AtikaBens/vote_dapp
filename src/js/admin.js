@@ -105,6 +105,8 @@ Admin = {
                 $('#stopVote').show();
                 $('#runVote').hide();
                 $('#addCand').hide();
+                $('#addelec').hide();
+
             }
         }).catch(function(error) {
             console.warn(error);
