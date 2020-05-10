@@ -13,13 +13,12 @@ contract Election {
         bytes32 poste;
         uint voteCount;
     }
-     // Model a voters
+    // Model a voters
     struct Electeur {
-    uint id;
+        uint id;
         string matricule_ele;
         string email;
         string password;
-       
     }
 
     // Store accounts that have voted
@@ -27,7 +26,7 @@ contract Election {
     // Store Candidates
     // Fetch Candidate
     mapping(uint => Candidate) public candidates;
-      mapping(uint => Electeur) public electeurs;
+    mapping(uint => Electeur) public electeurs;
     // Store Candidates Count
     uint public candidatesCount;
     uint public electeursCount;
@@ -57,7 +56,8 @@ contract Election {
         electeursCount++;
         electeurs[electeursCount]= Electeur(electeursCount,matricule_ele ,email,password);
 
-emit electeurAddedEvent();
+        // trigger electeur added event
+        emit electeurAddedEvent();
     }
 
     function vote (uint _candidateId) public {

@@ -2,6 +2,8 @@ Admin = {
     web3Provider: null,
     contracts: {},
     account: '0x0',
+    username: null,
+    password: null,
 
     init: function() {
         return Admin.initWeb3();
@@ -30,8 +32,21 @@ Admin = {
             // Connect provider to interact with contract
             Admin.contracts.Election.setProvider(Admin.web3Provider);
 
-            Admin.listenForEvents();
+            if((window.location.href).indexOf('?') != -1) {
+                var queryString = (window.location.href).substr((window.location.href).indexOf('?') + 1); 
 
+                // "queryString" will now contain kerdesPost=fdasdas%20ad%20asd%20ad%20asdas
+
+                username = (queryString.split('username='))[1].split('&')[0];
+                password = (queryString.split('password='))[1].split('&')[0];
+
+                // "value" will now contain fdasdas%20ad%20asd%20ad%20asdas
+                username = decodeURIComponent(username);
+                password = decodeURIComponent(password);
+
+            }
+
+            Admin.listenForEvents();
             return Admin.render();
         });
     },
@@ -47,7 +62,7 @@ Admin = {
                 toBlock: 'latest'
             }).watch(function(error, event) {
                 console.log("event triggered", event)
-                    // Reload when a new vote is recorded
+                // Reload when a new vote is recorded
                 Admin.render();
             });
         });
@@ -89,8 +104,7 @@ Admin = {
                     var name = candidate[2];
                     var fname = candidate[3];
                     var email=candidate[6];
-                   
-
+                
                     // Render candidate List
                     var candidateTemplate = "<tr><th>" + id +"</th><td>" + matricule+ "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) + "</td><td>"+ web3.toAscii(email) +"</td><tr>" 
 

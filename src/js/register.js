@@ -79,7 +79,7 @@ Electeur = {
             // Once all candidates are received, add to dom
             Promise.all(promises).then((electeurs) => {
 
-                var electeursList = $('#electeurList');
+                var electeursList = $('#electeursList');
                 electeursList.empty();
 
                 electeurs.forEach(electeur => {

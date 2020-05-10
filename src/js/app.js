@@ -84,10 +84,6 @@ App = {
                 promises.push(electionInstance.candidates(i));
             }
 
-         
-
-
-
             // Once all candidates are received, add to dom
             Promise.all(promises).then((candidates) => {
                 var candidatesResults = $("#candidatesResults");
