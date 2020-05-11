@@ -32,20 +32,6 @@ Admin = {
             // Connect provider to interact with contract
             Admin.contracts.Election.setProvider(Admin.web3Provider);
 
-            if((window.location.href).indexOf('?') != -1) {
-                var queryString = (window.location.href).substr((window.location.href).indexOf('?') + 1); 
-
-                // "queryString" will now contain kerdesPost=fdasdas%20ad%20asd%20ad%20asdas
-
-                username = (queryString.split('username='))[1].split('&')[0];
-                password = (queryString.split('password='))[1].split('&')[0];
-
-                // "value" will now contain fdasdas%20ad%20asd%20ad%20asdas
-                username = decodeURIComponent(username);
-                password = decodeURIComponent(password);
-
-            }
-
             Admin.listenForEvents();
             return Admin.render();
         });
@@ -57,12 +43,12 @@ Admin = {
             // Restart Chrome if you are unable to receive this event
             // This is a known issue with Metamask
             // https://github.com/MetaMask/metamask-extension/issues/2393
-            instance.candidateAddedEvent({}, {       
+            instance.candidateAddedEvent({}, {
                 fromBlock: '0',
                 toBlock: 'latest'
             }).watch(function(error, event) {
                 console.log("event triggered", event)
-                // Reload when a new vote is recorded
+                    // Reload when a new vote is recorded
                 Admin.render();
             });
         });
@@ -100,13 +86,13 @@ Admin = {
                 candidates.forEach(candidate => {
 
                     var id = candidate[0];
-                    var matricule =candidate[1];
+                    var matricule = candidate[1];
                     var name = candidate[2];
                     var fname = candidate[3];
-                    var email=candidate[6];
-                
+                    var email = candidate[6];
+
                     // Render candidate List
-                    var candidateTemplate = "<tr><th>" + id +"</th><td>" + matricule+ "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) + "</td><td>"+ web3.toAscii(email) +"</td><tr>" 
+                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + web3.toAscii(email) + "</td><tr>"
 
                     candidatesList.append(candidateTemplate);
 
@@ -135,17 +121,18 @@ $(function() {
     });
 });
 
-function runVote(){
+function runVote() {
 
     document.location.href = "./root.html";
 
 }
 
-function addCand(){
+function addCand() {
 
     document.location.href = "./candidate.html";
 
 }
-function addelec(){
-document.location.href = "./register.html";
+
+function addelec() {
+    document.location.href = "./register.html";
 }
