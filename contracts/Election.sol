@@ -41,7 +41,7 @@ contract Election {
     event electeurAddedEvent();
 
     constructor () public {
-          // addElecteur("admin","admin@gmail.com","admin");
+           addElecteur("admin","admin@gmail.com","admin");
     //    addCandidate(12,"Candidate 1","Candidate 2",25653,"Candidate 2","Candidate 2","Candidate 2");
    }
 

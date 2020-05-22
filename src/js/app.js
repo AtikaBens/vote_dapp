@@ -67,6 +67,7 @@ App = {
             if (err === null) {
                 App.account = account;
                 $("#accountAddress").html("Your Account: " + account);
+
             }
         });
 
@@ -114,6 +115,7 @@ App = {
             // Do not allow a user to vote
             if (hasVoted) {
                 $('form').hide();
+
             }
             loader.hide();
             content.show();
@@ -130,7 +132,8 @@ App = {
                 from: App.account
             });
         }).then(function(result) {
-            // Wait for votes to update
+             // Wait for votes to update
+        
             $("#content").hide();
             $("#loader").show();
         }).catch(function(err) {
