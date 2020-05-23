@@ -62,6 +62,7 @@ Result = {
         // Load contract data
         Result.contracts.Election.deployed().then(function(instance) {
             electionInstance = instance;
+            console.log(electionInstance.voters(Result.account));
             return electionInstance.candidatesCount();
         }).then(function(candidatesCount) {
 

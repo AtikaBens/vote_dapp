@@ -47,7 +47,7 @@ Electeur = {
                 toBlock: 'latest'
             }).watch(function(error, event) {
                 console.log("event triggered", event)
-                    // Reload when a new vote is recorded
+                // Reload when a new vote is recorded
                 Electeur.render();
             });
         });
@@ -83,7 +83,7 @@ Electeur = {
                 electeursList.empty();
 
                 electeurs.forEach(electeur => {
-
+                    console.log(electeur);
                     var id = electeur[0];
                     var matricule =electeur[1];
                     var email = electeur[2];
@@ -99,11 +99,6 @@ Electeur = {
                 })
             });
             return electionInstance.voters(Electeur.account);
-        }).then(function(hasVoted) {
-            // Do not allow a user to vote
-           
-        }).catch(function(error) {
-            console.warn(error);
         });
     },
 

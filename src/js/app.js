@@ -48,7 +48,7 @@ App = {
                 toBlock: 'latest'
             }).watch(function(error, event) {
                 console.log("event triggered", event)
-                    // Reload when a new vote is recorded
+                // Reload when a new vote is recorded
                 App.render();
             });
         });
