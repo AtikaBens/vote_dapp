@@ -2,8 +2,6 @@ Admin = {
     web3Provider: null,
     contracts: {},
     account: '0x0',
-    username: null,
-    password: null,
 
     init: function() {
         return Admin.initWeb3();

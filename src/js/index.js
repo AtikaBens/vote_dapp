@@ -50,6 +50,7 @@ function voterClick() {
                         document.location.href = "./root.html";
                     } else if (electionState[1] == 2) {
                         alert("Le vote est terminé");
+                        document.location.href = "./result.html";
                     } else {
                         alert("Le vote n\'a pas encore débuté");
                     }
