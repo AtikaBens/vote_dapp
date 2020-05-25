@@ -98,12 +98,7 @@ Electeur = {
 
                 })
             });
-            return electionInstance.voters(Electeur.account);
-        }).then(function(hasVoted) {
-            // Do not allow a user to vote
-           
-        }).catch(function(error) {
-            console.warn(error);
+            
         });
     },
 

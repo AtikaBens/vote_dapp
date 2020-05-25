@@ -101,7 +101,8 @@ Admin = {
             return electionInstance.voters(Admin.account);
         }).then(function(hasVoted) {
             // Do not allow a user to vote
-            if (hasVoted) {
+            console.log("has voted:  " + hasVoted);
+            if (hasVoted != 0) {
                 electionState = Admin.contracts.Election.deployed().then(function(instance) {
                     electionInstance = instance;
                     return electionInstance.electionState(1);
