@@ -66,8 +66,8 @@ function voterClick() {
 
 function adminClick() {
 
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value;
+    username = document.getElementById("admin_username").value;
+    password = document.getElementById("admin_password").value;
 
     // Load contract data
     promises = Admin.contracts.Election.deployed().then(function(instance) {
