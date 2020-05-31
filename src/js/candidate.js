@@ -10,7 +10,15 @@ function addCandidate() {
         	
         	var poste = $('#Poste').val();
 
-            return instance.addCandidate(matricule,name,fname,date,address,email,poste);
+                //message de validation
+                if (confirm("êtes vous d’accord")) {
+                   return instance.addCandidate(matricule,name,fname,date,address,email,poste);
+                }
+                else{
+                   document.location.href = "./candidate.html";
+                }
+
+
         });
     }
 

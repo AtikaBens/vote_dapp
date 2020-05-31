@@ -2,7 +2,7 @@ App = {
     web3Provider: null,
     contracts: {},
     account: '0x0',
-    hasVoted: false,
+    hasVoted: 0,
 
     init: function() {
         return App.initWeb3();
@@ -96,13 +96,20 @@ App = {
                 candidates.forEach(candidate => {
 
                     var id = candidate[0];
-                    var matricule =candidate[1];
+                    var matricule = candidate[1];
                     var name = candidate[2];
                     var fname = candidate[3];
                     var voteCount = candidate[8];
 
+                    electionInstance.voters(App.account).then(function(chosenCandidate) {
+
+                        if (id.valueOf() == chosenCandidate.valueOf()) {
+                            $('#candidateId').html("You voted for "+ web3.toAscii(name) +", "+web3.toAscii(fname)+". Matricule number : "+matricule);
+                        };
+                    })
+
                     // Render candidate Result
-                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) +"</td><td>" + web3.toAscii(fname) +"</td><td>"+ voteCount + "</td></tr>"
+                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + voteCount + "</td></tr>"
                     candidatesResults.append(candidateTemplate);
 
                     // Render candidate ballot option
@@ -113,7 +120,7 @@ App = {
             return electionInstance.voters(App.account);
         }).then(function(hasVoted) {
             // Do not allow a user to vote
-            if (hasVoted) {
+            if (hasVoted != 0) {
                 $('form').hide();
 
             }

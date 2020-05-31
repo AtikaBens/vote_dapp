@@ -2,8 +2,6 @@ Admin = {
     web3Provider: null,
     contracts: {},
     account: '0x0',
-    username: null,
-    password: null,
 
     init: function() {
         return Admin.initWeb3();
@@ -33,6 +31,7 @@ Admin = {
             Admin.contracts.Election.setProvider(Admin.web3Provider);
 
             Admin.listenForEvents();
+
             return Admin.render();
         });
     },
@@ -90,9 +89,10 @@ Admin = {
                     var name = candidate[2];
                     var fname = candidate[3];
                     var email = candidate[6];
+                    
 
                     // Render candidate List
-                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + web3.toAscii(email) + "</td><tr>"
+                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + web3.toAscii(email) + "</td></tr>"
 
                     candidatesList.append(candidateTemplate);
 
@@ -101,8 +101,17 @@ Admin = {
             return electionInstance.voters(Admin.account);
         }).then(function(hasVoted) {
             // Do not allow a user to vote
-            if (hasVoted) {
-                $('#stopVote').show();
+            console.log("has voted:  " + hasVoted);
+            if (hasVoted != 0) {
+                electionState = Admin.contracts.Election.deployed().then(function(instance) {
+                    electionInstance = instance;
+                    return electionInstance.electionState(1);
+                });
+                electionState.then((electionState) => {
+                    if (electionState[1] != 2) {
+                        $('#stopVote').show();
+                    }
+                });
                 $('#runVote').hide();
                 $('#addCand').hide();
                 $('#addelec').hide();
@@ -122,9 +131,31 @@ $(function() {
 });
 
 function runVote() {
+    Admin.contracts.Election.deployed().then(function(instance) {
+        return instance.initState(1);
+    });
+    if (confirm("êtes vous d’accord")) {
+        document.location.href = "./root.html";
+    }
+    else{
+    document.location.href = "./admin.html";
+    }
 
-    document.location.href = "./root.html";
+}
 
+function stopVote() {
+    Admin.contracts.Election.deployed().then(function(instance) {
+        return instance.initState(2);
+    });
+
+
+ if (confirm("êtes vous d’accord")) {
+    $('#stopVote').hide();                }
+else{
+    document.location.href = "./admin.html";
+                }
+
+    
 }
 
 function addCand() {

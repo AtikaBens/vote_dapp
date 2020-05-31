@@ -98,12 +98,7 @@ Electeur = {
 
                 })
             });
-            return electionInstance.voters(Electeur.account);
-        }).then(function(hasVoted) {
-            // Do not allow a user to vote
-           
-        }).catch(function(error) {
-            console.warn(error);
+            
         });
     },
 
@@ -132,8 +127,13 @@ function addElecteur() {
             var email = $('#email').val();
             var password = $('#password').val();
             
-            
-            return instance.addElecteur(Matricule,email,password);
+
+            if (confirm("êtes vous d’accord")) {
+                 return instance.addElecteur(Matricule,email,password);
+                }
+                else{
+                   document.location.href = "./register.html";
+                }
         });
     }
   

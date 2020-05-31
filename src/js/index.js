@@ -21,6 +21,13 @@ function voterClick() {
 
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
+
+    //Load Election state
+    electionState = Admin.contracts.Election.deployed().then(function(instance) {
+        electionInstance = instance;
+        return electionInstance.electionState(1);
+    });
+
     // Load contract data
     promises = Admin.contracts.Election.deployed().then(function(instance) {
         electionInstance = instance;
@@ -38,12 +45,19 @@ function voterClick() {
         Promise.all(promises).then((electeurs) => {
             found = electeurs.find(electeur => electeur[2] == username & electeur[3] == password);
             if (found != undefined) {
-                document.location.href = "./root.html";
-            }else{
-                document.getElementById("voter_login-submit").style.background='#C25E5E';
-                alert ("Le nom d'utilisateur ou mot de passe est incorrect , veuillez réessayer Svp !");
-               
-
+                electionState.then((electionState) => {
+                    if (electionState[1] == 1) {
+                        document.location.href = "./root.html";
+                    } else if (electionState[1] == 2) {
+                        alert("Le vote est terminé");
+                        document.location.href = "./result.html";
+                    } else {
+                        alert("Le vote n\'a pas encore débuté");
+                    }
+                });
+            } else {
+                document.getElementById("voter_login-submit").style.background = '#C25E5E';
+                alert("Le nom d'utilisateur ou le mot de passe est incorrect. Veuillez essayer à nouveau.");
             }
         });
     });
@@ -54,6 +68,7 @@ function adminClick() {
 
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
+
     // Load contract data
     promises = Admin.contracts.Election.deployed().then(function(instance) {
         electionInstance = instance;
@@ -69,13 +84,13 @@ function adminClick() {
         }
         // Once all candidates are received, add to dom
         Promise.all(promises).then((electeurs) => {
-            found = electeurs.find(electeur => electeur[2] == username & electeur[3] == password);
+            found = electeurs.find(electeur => electeur[0] == 1 & electeur[2] == username & electeur[3] == password);
             if (found != undefined) {
                 document.location.href = "./admin.html";
-            }else{
-                document.getElementById("admin_login-submit").style.background='#C25E5E';
-                 alert ("Le nom d'utilisateur ou mot de passe est incorrect , veuillez réessayer Svp !");
-               
+            } else {
+                document.getElementById("admin_login-submit").style.background = '#C25E5E';
+                alert("Le nom d'utilisateur ou le mot de passe est incorrect. Veuillez essayer à nouveau.");
+
             }
         });
     });
