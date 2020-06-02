@@ -66,7 +66,7 @@ App = {
         web3.eth.getCoinbase(function(err, account) {
             if (err === null) {
                 App.account = account;
-                $("#accountAddress").html("Your Account: " + account);
+                $("#accountAddress").html("Votre compte : " + account);
 
             }
         });
@@ -104,7 +104,7 @@ App = {
                     electionInstance.voters(App.account).then(function(chosenCandidate) {
 
                         if (id.valueOf() == chosenCandidate.valueOf()) {
-                            $('#candidateId').html("You voted for "+ web3.toAscii(name) +", "+web3.toAscii(fname)+". Matricule number : "+matricule);
+                            $('#candidateId').html("Vous avez voté pour : "+ web3.toAscii(name) +", "+web3.toAscii(fname)+". N° Matricule  : "+matricule);
                         };
                     })
 

@@ -131,11 +131,13 @@ $(function() {
 });
 
 function runVote() {
+    if (confirm("êtes vous d’accord")) {
+       
     Admin.contracts.Election.deployed().then(function(instance) {
         return instance.initState(1);
+         document.location.href = "./root.html";
     });
-    if (confirm("êtes vous d’accord")) {
-        document.location.href = "./root.html";
+    document.location.href = "./root.html";
     }
     else{
     document.location.href = "./admin.html";
@@ -144,13 +146,17 @@ function runVote() {
 }
 
 function stopVote() {
+
+     if (confirm("êtes vous d’accord")) {
+   
     Admin.contracts.Election.deployed().then(function(instance) {
         return instance.initState(2);
+                       
     });
+     $('#stopVote').hide(); 
+}
 
 
- if (confirm("êtes vous d’accord")) {
-    $('#stopVote').hide();                }
 else{
     document.location.href = "./admin.html";
                 }
