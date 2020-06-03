@@ -127,8 +127,13 @@ function addElecteur() {
             var email = $('#email').val();
             var password = $('#password').val();
             
-            
-            return instance.addElecteur(Matricule,email,password);
+
+            if (confirm("êtes vous d’accord")) {
+                 return instance.addElecteur(Matricule,email,password);
+                }
+                else{
+                   document.location.href = "./register.html";
+                }
         });
     }
   

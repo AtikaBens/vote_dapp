@@ -1,3 +1,7 @@
+
+
+//récuperer les cordonnées des candidats et les ajouter a la blockchain
+
 function addCandidate() {
         App.contracts.Election.deployed().then(function(instance) {
         	var matricule = $('#Matricule').val();
@@ -10,7 +14,15 @@ function addCandidate() {
         	
         	var poste = $('#Poste').val();
 
-            return instance.addCandidate(matricule,name,fname,date,address,email,poste);
+                //message de validation
+                if (confirm("êtes vous d’accord")) {
+                   return instance.addCandidate(matricule,name,fname,date,address,email,poste);
+                }
+                else{
+                   document.location.href = "./candidate.html";
+                }
+
+
         });
     }
 

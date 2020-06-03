@@ -4,24 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Election Results</title>
-
+    <title>Resultats des élection</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/index.css" rel="stylesheet">
+    
   </head>
   <body>
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="text-center">Election Results</h1>
+          <h1 class="text-center">Résultats des éléctions</h1>
           <hr/>
           <br/>
           <div id="loader">
@@ -34,7 +27,7 @@
                   <th scope="col">ID</th>
                   <th scope="col">Matricule</th>
                   <th scope="col">Nom</th>
-                   <th scope="col">Prénom</th>
+                  <th scope="col">Prénom</th>
                   <th scope="col">Votes</th>
                 </tr>
               </thead>
@@ -53,18 +46,23 @@
             </form>
             <p id="accountAddress" class="text-center"></p>
             <p id="candidateId" class="text-center"></p>
-            
+            <br>
+            <br>
+            <br>
+            <div class="col-sm-6 col-sm-offset-3">
+              <center>
+              <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value=" Déconnexion " onclick="déconnexion();" >
+              </center>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/result.js"></script>
   </body>
 </html>

@@ -4,16 +4,10 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<title>Login</title>
-		<!-- Bootstrap -->
+		<title>Connexion</title>
+		
 		<link href="css/index.css" rel="stylesheet">
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		
 	</head>
 	<body>
 		<div class="container">
@@ -23,7 +17,7 @@
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-6">
-									<a href="#" class="active" id="login-form-link">Utilisateur</a>
+									<a href="#" class="active" id="login-form-link">Elécteur</a>
 								</div>
 								<div class="col-xs-6">
 									<a href="#" id="register-form-link">Administrateur</a>
@@ -36,31 +30,31 @@
 								<div class="col-lg-12">
 									<form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
 										<div class="form-group">
-											<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+											<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
 										</div>
 										<div class="form-group">
-											<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+											<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
 										</div>
 										
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">
-													<input type="button" name="voter_login-submit" id="voter_login-submit" tabindex="5" class="form-control btn btn-login" value="Log In" onclick="voterClick();">
+													<input type="button" name="voter_login-submit" id="voter_login-submit" tabindex="5" class="form-control btn btn-login" value="Se connecter" onclick="voterClick();">
 												</div>
 											</div>
 										</div>
 									</form>
 									<form id="register-form" method="post" role="form" style="display: none;">
 										<div class="form-group">
-											<input type="text" name="username" id="admin_username" tabindex="1" class="form-control" placeholder="Username" value="">
+											<input type="text" name="username" id="admin_username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
 										</div>
 										<div class="form-group">
-											<input type="password" name="password" id="admin_password" tabindex="2" class="form-control" placeholder="Password">
+											<input type="password" name="password" id="admin_password" tabindex="2" class="form-control" placeholder="Mot de passe">
 										</div>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">
-													<input type="button" name="admin_login-submit" id="admin_login-submit" tabindex="4" class="form-control btn btn-login" value="Log In" onclick="adminClick();">
+													<input type="button" name="admin_login-submit" id="admin_login-submit" tabindex="4" class="form-control btn btn-login" value="Se connecter" onclick="adminClick();">
 												</div>
 											</div>
 										</div>

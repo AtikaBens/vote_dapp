@@ -111,3 +111,10 @@ $(function() {
         Result.init();
     });
 });
+
+
+function déconnexion() {
+
+    document.location.href = "./index.html";
+
+}

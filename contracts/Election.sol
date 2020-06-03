@@ -52,8 +52,10 @@ contract Election {
     event electionInitEvent();
 
     constructor () public {
+
         addElecteur("admin","admin@gmail.com","admin");
         initState(0);
+
    }
 
     function addCandidate (string _matricule,bytes32 _name,bytes32 _fname,bytes32 _date,string _adresss, bytes32 _email,bytes32 _poste) public {

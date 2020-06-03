@@ -66,7 +66,8 @@ App = {
         web3.eth.getCoinbase(function(err, account) {
             if (err === null) {
                 App.account = account;
-                $("#accountAddress").html("Your Account: " + account);
+                $("#accountAddress").html("Votre compte : " + account);
+
             }
         });
 
@@ -103,7 +104,7 @@ App = {
                     electionInstance.voters(App.account).then(function(chosenCandidate) {
 
                         if (id.valueOf() == chosenCandidate.valueOf()) {
-                            $('#candidateId').html("You voted for "+ web3.toAscii(name) +", "+web3.toAscii(fname)+". Matricule number : "+matricule);
+                            $('#candidateId').html("Vous avez voté pour : "+ web3.toAscii(name) +", "+web3.toAscii(fname)+". N° Matricule  : "+matricule);
                         };
                     })
 
@@ -121,6 +122,7 @@ App = {
             // Do not allow a user to vote
             if (hasVoted != 0) {
                 $('form').hide();
+
             }
             loader.hide();
             content.show();
@@ -137,7 +139,8 @@ App = {
                 from: App.account
             });
         }).then(function(result) {
-            // Wait for votes to update
+             // Wait for votes to update
+        
             $("#content").hide();
             $("#loader").show();
         }).catch(function(err) {

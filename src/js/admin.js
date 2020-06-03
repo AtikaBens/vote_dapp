@@ -39,15 +39,13 @@ Admin = {
     // Listen for events emitted from the contract
     listenForEvents: function() {
         Admin.contracts.Election.deployed().then(function(instance) {
-            // Restart Chrome if you are unable to receive this event
-            // This is a known issue with Metamask
-            // https://github.com/MetaMask/metamask-extension/issues/2393
+            
             instance.candidateAddedEvent({}, {
                 fromBlock: '0',
                 toBlock: 'latest'
             }).watch(function(error, event) {
                 console.log("event triggered", event)
-                    // Reload when a new vote is recorded
+                    // actualiser aprés chaque nv vote
                 Admin.render();
             });
         });
@@ -56,7 +54,7 @@ Admin = {
     render: function() {
         var electionInstance;
 
-        // Load account data
+        // Charger les données du compte
         web3.eth.getCoinbase(function(err, account) {
             if (err === null) {
                 Admin.account = account;
@@ -64,7 +62,7 @@ Admin = {
         });
 
         $('#stopVote').hide();
-        // Load contract data
+        // Charger les données du smart contract
         Admin.contracts.Election.deployed().then(function(instance) {
             electionInstance = instance;
             return electionInstance.candidatesCount();
@@ -89,10 +87,10 @@ Admin = {
                     var name = candidate[2];
                     var fname = candidate[3];
                     var email = candidate[6];
-                    var voteCount = candidate[8];
+                    
 
-                    // Render candidate List
-                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + web3.toAscii(email) +"</td><td>"+ voteCount + "</td></tr>"
+                    // retourner la luste des candidats
+                    var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + web3.toAscii(email) + "</td></tr>"
 
                     candidatesList.append(candidateTemplate);
 
@@ -100,7 +98,7 @@ Admin = {
             });
             return electionInstance.voters(Admin.account);
         }).then(function(hasVoted) {
-            // Do not allow a user to vote
+            // Empecher l'utilisateur a voter 
             console.log("has voted:  " + hasVoted);
             if (hasVoted != 0) {
                 electionState = Admin.contracts.Election.deployed().then(function(instance) {
@@ -129,27 +127,49 @@ $(function() {
         Admin.init();
     });
 });
-
+// Lancer le vote 
 function runVote() {
+    if (confirm("êtes vous d’accord")) {
+       
     Admin.contracts.Election.deployed().then(function(instance) {
         return instance.initState(1);
+         document.location.href = "./root.html";
     });
     document.location.href = "./root.html";
+    }
+    else{
+    document.location.href = "./admin.html";
+    }
 
 }
+// arrêter le vote une fois le temps écoulé 
 
 function stopVote() {
+
+     if (confirm("êtes vous d’accord")) {
+   
     Admin.contracts.Election.deployed().then(function(instance) {
         return instance.initState(2);
+                       
     });
-    $('#stopVote').hide();
+     $('#stopVote').hide(); 
 }
+
+
+else{
+    document.location.href = "./admin.html";
+                }
+
+    
+}
+//ajouter un candidat
 
 function addCand() {
 
     document.location.href = "./candidate.html";
 
 }
+//ajouter un électeur
 
 function addelec() {
     document.location.href = "./register.html";
