@@ -1,3 +1,7 @@
+
+
+//récuperer les cordonnées des candidats et les ajouter a la blockchain
+
 function addCandidate() {
         App.contracts.Election.deployed().then(function(instance) {
         	var matricule = $('#Matricule').val();
