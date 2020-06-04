@@ -1,7 +1,7 @@
 pragma solidity 0.4.25;
 
 contract Election {
-    // Model a Candidate
+    // Modèle d'un candidat
     struct Candidate {
         uint id;
         string matricule;
@@ -13,40 +13,40 @@ contract Election {
         bytes32 poste;
         uint voteCount;
     }
-    // Model a voter
+    // Modèle d'un électeur
     struct Electeur {
         uint id;
         string matricule_ele;
         string email;
         string password;
     }
-
+    // L'état des élections
     struct ElectionState {
         uint id;
         uint election_state;
     }
 
-    // Store accounts that have voted
+    // Stocker les comptes qui ont déja voté 
     mapping(address => uint) public voters;
     
-    // Store Candidates
-    // Fetch Candidate
+    // Stocker les candidats
     mapping(uint => Candidate) public candidates;
+    // Stocker les candidats
     mapping(uint => Electeur) public electeurs;
 
-    // store Election state
+    // Stocker l'état des élection
     mapping(uint => ElectionState) public electionState;
     
-    // Store Candidates Count
+    // Stocker le nombres de voie pour chaque candidat
     uint public candidatesCount;
     uint public electeursCount;
 
-    // voted event
+    //Déclancher  l'évenement de vote 
     event votedEvent (
         uint indexed _candidateId
     );
 
-    // candidate added event
+    
     event candidateAddedEvent();
     event electeurAddedEvent();
     event electionInitEvent();
@@ -62,38 +62,38 @@ contract Election {
         candidatesCount ++;
         candidates[candidatesCount] = Candidate(candidatesCount,_matricule,_name,_fname,_date,_adresss,_email,_poste, 0);
 
-        // trigger candidate added event
+        // Déclancher l'évenement de l'ajout d'un candidat a la blockchain
         emit candidateAddedEvent();
     }
     function addElecteur( string matricule_ele,string email,string password )public{
         electeursCount++;
         electeurs[electeursCount]= Electeur(electeursCount,matricule_ele ,email,password);
 
-        // trigger electeur added event
+        // Déclancher l'évenement de l'ajout d'un électeur a la blockchain
         emit electeurAddedEvent();
     }
 
     function initState(uint _state)public{
         electionState[1] = ElectionState(1,_state);
 
-        // trigger election init event
+        // L'évenement du déployement du contrat
         emit electionInitEvent();
     }
 
     function vote (uint _candidateId) public {
-        // require that they haven't voted before
+        // Vérifier s'ils n'ont pas voté avant
         require(voters[msg.sender] == 0);
 
-        // require a valid candidate
+        // exiger un candidat valide
         require(_candidateId > 0 && _candidateId <= candidatesCount);
 
-        // record that voter has voted
+        // Vérifier si un électeur a voté
         voters[msg.sender] = _candidateId;
 
-        // update candidate vote Count
+        // La mise à jour de compte des vote
         candidates[_candidateId].voteCount ++;
 
-        // trigger voted event
+        
         emit votedEvent(_candidateId);
     }
 }

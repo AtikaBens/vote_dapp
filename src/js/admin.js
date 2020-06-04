@@ -8,14 +8,14 @@ Admin = {
     },
 
     initWeb3: function() {
-        // TODO: refactor conditional
+        
         if (typeof web3 !== 'undefined') {
-            // If a web3 instance is already provided by Meta Mask.
+            
             Admin.web3Provider = web3.currentProvider;
             window.ethereum.enable();
             web3 = new Web3(web3.currentProvider);
         } else {
-            // Specify default instance if no web3 instance provided
+           
             Admin.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
             window.ethereum.enable();
             web3 = new Web3(Admin.web3Provider);
@@ -25,9 +25,9 @@ Admin = {
 
     initContract: function() {
         $.getJSON("Election.json", function(election) {
-            // Instantiate a new truffle contract from the artifact
+            
             Admin.contracts.Election = TruffleContract(election);
-            // Connect provider to interact with contract
+           
             Admin.contracts.Election.setProvider(Admin.web3Provider);
 
             Admin.listenForEvents();
@@ -36,7 +36,7 @@ Admin = {
         });
     },
 
-    // Listen for events emitted from the contract
+    
     listenForEvents: function() {
         Admin.contracts.Election.deployed().then(function(instance) {
             
@@ -68,13 +68,13 @@ Admin = {
             return electionInstance.candidatesCount();
         }).then(function(candidatesCount) {
 
-            // Store all promised to get candidate info
+            
             const promises = [];
             for (var i = 1; i <= candidatesCount; i++) {
                 promises.push(electionInstance.candidates(i));
             }
 
-            // Once all candidates are received, add to dom
+            
             Promise.all(promises).then((candidates) => {
 
                 var candidatesList = $('#candidatesList');
@@ -89,7 +89,7 @@ Admin = {
                     var email = candidate[6];
                     
 
-                    // retourner la luste des candidats
+                    // retourner la liste des candidats
                     var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + web3.toAscii(email) + "</td></tr>"
 
                     candidatesList.append(candidateTemplate);

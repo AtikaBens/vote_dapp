@@ -22,26 +22,26 @@ function voterClick() {
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
 
-    //Load Election state
+    //charger l'état des éléction (Lancer/arrêter)
     electionState = Admin.contracts.Election.deployed().then(function(instance) {
         electionInstance = instance;
         return electionInstance.electionState(1);
     });
 
-    // Load contract data
+    // charger les données du smart contract 
     promises = Admin.contracts.Election.deployed().then(function(instance) {
         electionInstance = instance;
         return electionInstance.electeursCount();
     });
 
     promises.then(function(electeursCount) {
-        // Store all promised to get candidate info
+        
         const promises = [];
         var found = null;
         for (var i = 1; i <= electeursCount; i++) {
             promises.push(electionInstance.electeurs(i));
         }
-        // Once all candidates are received, add to dom
+        
         Promise.all(promises).then((electeurs) => {
             found = electeurs.find(electeur => electeur[2] == username & electeur[3] == password);
             if (found != undefined) {
@@ -69,20 +69,20 @@ function adminClick() {
     username = document.getElementById("admin_username").value;
     password = document.getElementById("admin_password").value;
 
-    // Load contract data
+    // charger les données du smart contract 
     promises = Admin.contracts.Election.deployed().then(function(instance) {
         electionInstance = instance;
         return electionInstance.electeursCount();
     });
 
     promises.then(function(electeursCount) {
-        // Store all promised to get candidate info
+        
         const promises = [];
         var found = null;
         for (var i = 1; i <= electeursCount; i++) {
             promises.push(electionInstance.electeurs(i));
         }
-        // Once all candidates are received, add to dom
+      
         Promise.all(promises).then((electeurs) => {
             found = electeurs.find(electeur => electeur[0] == 1 & electeur[2] == username & electeur[3] == password);
             if (found != undefined) {

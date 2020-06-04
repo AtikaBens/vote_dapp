@@ -9,14 +9,14 @@ App = {
     },
 
     initWeb3: function() {
-        // TODO: refactor conditional
+        
         if (typeof web3 !== 'undefined') {
-            // If a web3 instance is already provided by Meta Mask.
+            
             App.web3Provider = web3.currentProvider;
             window.ethereum.enable();
             web3 = new Web3(web3.currentProvider);
         } else {
-            // Specify default instance if no web3 instance provided
+            
             App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
             window.ethereum.enable();
             web3 = new Web3(App.web3Provider);
@@ -26,9 +26,9 @@ App = {
 
     initContract: function() {
         $.getJSON("Election.json", function(election) {
-            // Instantiate a new truffle contract from the artifact
+            
             App.contracts.Election = TruffleContract(election);
-            // Connect provider to interact with contract
+            
             App.contracts.Election.setProvider(App.web3Provider);
 
             App.listenForEvents();
@@ -37,18 +37,16 @@ App = {
         });
     },
 
-    // Listen for events emitted from the contract
+    
     listenForEvents: function() {
         App.contracts.Election.deployed().then(function(instance) {
-            // Restart Chrome if you are unable to receive this event
-            // This is a known issue with Metamask
-            // https://github.com/MetaMask/metamask-extension/issues/2393
+           
             instance.votedEvent({}, {
                 fromBlock: '0',
                 toBlock: 'latest'
             }).watch(function(error, event) {
                 console.log("event triggered", event)
-                    // Reload when a new vote is recorded
+                     // actualiser aprés chaque nv vote
                 App.render();
             });
         });
@@ -62,7 +60,7 @@ App = {
         loader.show();
         content.hide();
 
-        // Load account data
+        // Charger les données du compte
         web3.eth.getCoinbase(function(err, account) {
             if (err === null) {
                 App.account = account;
@@ -71,7 +69,7 @@ App = {
             }
         });
 
-        // Load contract data
+        // Charger les données du smart contract
         App.contracts.Election.deployed().then(function(instance) {
             electionInstance = instance;
             return electionInstance.candidatesCount();
@@ -79,13 +77,12 @@ App = {
             var candidatesResults = $("#candidatesResults");
             candidatesResults.empty();
 
-            // Store all promised to get candidate info
             const promises = [];
             for (var i = 1; i <= candidatesCount; i++) {
                 promises.push(electionInstance.candidates(i));
             }
 
-            // Once all candidates are received, add to dom
+          
             Promise.all(promises).then((candidates) => {
                 var candidatesResults = $("#candidatesResults");
                 candidatesResults.empty();
@@ -108,18 +105,18 @@ App = {
                         };
                     })
 
-                    // Render candidate Result
+                    // retourner le résultat des candidats
                     var candidateTemplate = "<tr><th>" + id + "</th><td>" + matricule + "</td><td>" + web3.toAscii(name) + "</td><td>" + web3.toAscii(fname) + "</td><td>" + voteCount + "</td></tr>"
                     candidatesResults.append(candidateTemplate);
 
-                    // Render candidate ballot option
+                    // la liste des choix de candidats
                     var candidateOption = "<option value='" + id + "' >" + id + " - " + web3.toAscii(name) + "  " + web3.toAscii(fname) + "</ option>"
                     candidatesSelect.append(candidateOption);
                 })
             });
             return electionInstance.voters(App.account);
         }).then(function(hasVoted) {
-            // Do not allow a user to vote
+            // Empecher l'utilisateur a voter
             if (hasVoted != 0) {
                 $('form').hide();
 
@@ -139,7 +136,7 @@ App = {
                 from: App.account
             });
         }).then(function(result) {
-             // Wait for votes to update
+             // actuallisation des votes 
         
             $("#content").hide();
             $("#loader").show();
